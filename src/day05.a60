@@ -1,0 +1,9 @@
+procedure printresults(r1, r2);
+integer r1, r2;
+code;
+
+begin
+    integer result1, result2;
+    result1 := 0; result2 := 0;
+    printresults(result1, result2);
+end
