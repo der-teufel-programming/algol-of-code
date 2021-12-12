@@ -1,0 +1,31 @@
+procedure printresults(r1, r2);
+integer r1, r2;
+code;
+
+begin
+    integer result1, result2;
+    integer x, y, z, t;
+    integer i, NN;
+    NN := 1997;
+    result1 := 0;
+    result2 := 0;
+    ininteger(0, x);
+    ininteger(0, y);
+    ininteger(0, z);
+    if y > x then
+        result1 := result1 + 1;
+    if z > y then
+        result1 := result1 + 1;
+    for i := 1 step 1 until NN do
+    begin
+        ininteger(0, t);
+        if t > x then
+            result2 := result2 + 1;
+        if t > z then
+            result1 := result1 + 1;
+        x := y;
+        y := z;
+        z := t;
+    end;
+    printresults(result1, result2);
+end

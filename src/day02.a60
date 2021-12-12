@@ -1,0 +1,42 @@
+procedure printresults(r1,r2);
+    integer r1, r2;
+code;
+
+begin
+    integer result1, result2;
+    integer move, depth, depth2;
+    integer i, j, NN;
+    integer inp;
+    move := 0; depth := 0; depth2 := 0;
+    result1 := 0; result2 := 0;
+    NN := 1000;
+    for i := 1 step 1 until NN do
+    begin
+        inchar(0, "fdu", inp);
+        if inp = 1 then
+        begin
+            for j := 1 step 1 until 8 do
+            begin
+                inchar(0, "forward0123456789", inp);
+            end;
+            move := move + inp - 8;
+            depth2 := depth2 + depth * (inp - 8);
+        end move;
+        if inp = 2 then
+        begin
+            for j := 1 step 1 until 5 do
+                inchar(0, "down0123456789", inp);
+            depth := depth + inp - 5;
+        end down;
+        if inp = 3 then
+        begin
+            for j := 1 step 1 until 3 do
+                inchar(0, "up0123456789", inp);
+            depth := depth - inp + 3;
+        end up;
+        inchar(0, "\n", inp);
+    end mainloop;
+    result1 := move * depth;
+    result2 := move * depth2;
+    printresults(result1, result2);
+end

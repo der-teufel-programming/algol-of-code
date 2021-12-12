@@ -1,0 +1,9 @@
+procedure printresults(r1,r2);
+    integer r1, r2;
+begin
+    outstring(1, "Results are:\nPart 1: ");
+    outinteger(1, r1);
+    outstring(1, "\nPart 2: ");
+    outinteger(1, r2);
+    outchar(1, "\n", 1);
+end printresults;
