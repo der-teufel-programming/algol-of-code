@@ -1,5 +1,5 @@
 procedure printresults(r1, r2);
-integer r1, r2;
+    integer r1, r2;
 code;
 
 begin
