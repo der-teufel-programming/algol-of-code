@@ -1,6 +1,6 @@
 # Algol of Code
 
-My solutions for AoC 2021
+My solutions for AoC 2021 written in GNU Marst dialect of Algol 60
 
 ## Requirements
 - `GNU MARST Algol-to-C Translator`
