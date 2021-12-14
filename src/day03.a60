@@ -1,9 +1,121 @@
 procedure printresults(r1, r2);
-integer r1, r2;
+    integer r1, r2;
 code;
+
+procedure newline;
+begin
+    outstring(1, "\n");
+end newline;
+
+integer procedure mostcommon(arr, ind, length, minrange, maxrange);
+    integer array arr;
+    integer ind, length, minrange, maxrange;
+begin
+    mostcommon := arr[1, ind];
+end mostcommon;
+
+integer procedure count(arr, length, minrange, maxrange);
+    integer array arr;
+    integer length, minrange, maxrange;
+begin
+    integer res, i; res := 0;
+    for i := 1 step 1 until length do
+    begin
+        if arr[i, 1] <= maxrange & arr[i, 1] >= minrange then res := res + 1;
+    end;
+    count := res;
+end count;
+
+begin
+integer L, NN;
+L := 12;
+NN := 1000;
+comment L := 5;
+comment NN := 12;
 
 begin
     integer result1, result2;
-    result1 := 0; result2 := 0;
+    integer i, j, k;
+    integer array ones [1:L], zeros [1:L];
+    integer array oxygen [1:NN, 1:L], co2 [1:NN, 1:L];
+    for i := 1 step 1 until L do
+    begin
+        ones[i] := 0;
+        zeros[i] := 0;
+    end;
+    for i := 1 step 1 until NN do
+    begin
+        for j := 1 step 1 until L do
+        begin
+            inchar(0, "01", k);
+            if k = 1 then
+                zeros[j] := zeros[j] + 1;
+            if k = 2 then
+                ones[j] := ones[j] + 1;
+            oxygen[i, j] := k - 1;
+            co2[i, j] := k - 1;
+        end;
+        inchar(0, "\n", k);
+    end;
+    comment Debug;
+    outinteger(1, zeros[1]);
+    for j := 2 step 1 until L do
+    begin
+        outstring(1, ", ");
+        outinteger(1, zeros[j]);
+    end;
+    newline;
+    outinteger(1, ones[1]);
+    for j := 2 step 1 until L do
+    begin
+        outstring(1, ", ");
+        outinteger(1, ones[j]);
+    end;
+    newline;
+    k := count(oxygen, NN, 0, 1);
+    outinteger(1, k); newline;
+    k := count(co2, NN, 0, 1);
+    outinteger(1, k); newline;
+    comment End of debug;
+    k := 0; j := 0;
+    for i := 1 step 1 until L do
+    begin
+        if zeros[i] < ones[i] then k := k + 1
+        else j := j + 1;
+        k := 2 * k;
+        j := 2 * j;
+    end;
+    k := k / 2; j := j / 2;
+    outinteger(1, k); outstring(1, ", "); outinteger(1, j); newline;
+    result1 := k * j;
+    for i := 1 step 1 until L do begin
+        j := count(oxygen, L, 0, 1);
+        if j > 1 then begin
+            j := mostcommon(oxygen, i, L, 0, 1);
+            if j = 1 then begin
+                for j := 1 step 1 until NN do begin
+                    if oxygen[j, i] = 0 then begin
+                        for k := 1 step 1 until L do oxygen[j, k] := 2;
+                    end;
+                end;
+            end;
+            if j = 0 then begin
+                for j := 1 step 1 until NN do begin
+                    if oxygen[j, i] = 1 then begin
+                        for k := 1 step 1 until L do oxygen[j, k] := 2;
+                    end;
+                end;
+            end;
+        end;
+        
+        j := count(co2, L, 0, 1);
+        if j > 1 then
+        begin
+            j := mostcommon(co2, i, L, 0, 1);
+        end;
+        
+    end;
+    result2 := 0;
     printresults(result1, result2);
+end;
 end
